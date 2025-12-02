@@ -113,12 +113,34 @@ class Game {
     return false;
   }
 
+  hasAvailableMoves() {
+    for (let r = 0; r < 4; r++) {
+      for (let c = 0; c < 4; c++) {
+        if (this.board[r][c] === 0) {
+          return true;
+        }
+
+        const current = this.board[r][c];
+
+        if (c < 3 && this.board[r][c + 1] === current) {
+          return true;
+        }
+
+        if (r < 3 && this.board[r + 1][c] === current) {
+          return true;
+        }
+      }
+    }
+
+    return false;
+  }
+
   checkGameStatus() {
     if (this.checkWin()) {
       return;
     }
 
-    if (!this.hasAvilableMoves()) {
+    if (!this.hasAvailableMoves()) {
       this.status = 'lose';
     }
   }
