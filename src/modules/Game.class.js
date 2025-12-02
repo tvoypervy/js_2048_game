@@ -118,7 +118,7 @@ class Game {
       return;
     }
 
-    if (!this.hasAailableMoves()) {
+    if (!this.hasAvilableMoves()) {
       this.status = 'lose';
     }
   }
